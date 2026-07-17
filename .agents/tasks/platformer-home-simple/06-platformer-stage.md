@@ -6,7 +6,7 @@ Create the game stage component that combines the physics hook, platforms, pipes
 
 ### Task Requirements
 - Render a fixed-size game world.
-- Place a floor platform and three elevated platforms, each with a pipe.
+- Place a floor platform and four elevated platforms, each with a pipe.
 - Wire each pipe to a page via Inertia `router.visit`.
 - Render the `Knight` component at the player's position.
 - Display brief control instructions.
@@ -36,7 +36,7 @@ It uses:
 - `Pipe` from `@/components/game/Pipe`
 - `router` from `@inertiajs/react`
 - `usePage` from `@inertiajs/react`
-- Route helpers from `@/routes`: `aboutMe`, `dashboard`, `login`, `settingsProfile`
+- Route helpers from `@/routes`: `aboutMe`, `dashboard`, `feedbackCreate`, `login`, `settingsProfile`
 
 #### Modifications to Existing Code
 None.
@@ -52,10 +52,11 @@ None.
 
 The component:
 1. Defines `worldWidth`, `worldHeight`, `playerSize`.
-2. Defines the floor platform and three elevated platforms with pipes.
+2. Defines the floor platform and four elevated platforms with pipes.
 3. Defines the pipe list with labels and target routes:
    - Pipe 1 → `aboutMe()`
    - Pipe 2 → `dashboard()` if authenticated, otherwise `login()`
    - Pipe 3 → `settingsProfile()`
+   - Pipe 4 → `feedbackCreate()`
 4. Calls `usePlatformer` with the world data and an `onEnterPipe` callback that runs `router.visit(pipeTarget)`.
 5. Renders a container with absolute positioning, the platforms, the pipes, the knight, and instructions text.

@@ -2,7 +2,7 @@
 
 ## Summary
 
-Enhance the simple platformer home screen with better game feel, animations, and UX. Keep the same three navigation pipes (About Me, Dashboard, Settings) and the CSS-block aesthetic. No new routes or pages are added.
+Enhance the simple platformer home screen with better game feel, animations, and UX. The simple plan now includes four navigation pipes (About Me, Dashboard, Settings, Feedback), and this polished extension applies to all four. No new routes or pages are added beyond those already defined in the simple plan.
 
 ### Changes Required
 - Extend `resources/js/hooks/use-platformer.ts` with:
@@ -27,7 +27,7 @@ Enhance the simple platformer home screen with better game feel, animations, and
 - All work is frontend-only.
 
 ### High-Level Use Case
-After the simple platformer is already working, this ticket improves the experience. The knight accelerates and decelerates smoothly, jumps feel responsive, walking/running/falling are animated, entering a pipe shows a slide-down animation, and the background/labels/particles make the world feel more alive.
+After the simple platformer is already working, this ticket improves the experience. The knight accelerates and decelerates smoothly, jumps feel responsive, walking/running/falling are animated, entering a pipe shows a slide-down animation, and the background/labels/particles make the world feel more alive. The Feedback pipe receives the same label, entry animation, and responsive treatment as the other pipes.
 
 ### Implementation Analysis
 
@@ -43,7 +43,7 @@ The simple platformer works but may feel rigid or bare. The product owner wants 
 **Constraints:**
 - Must remain CSS-block only.
 - Must not add new runtime dependencies.
-- Must keep the existing three pipes and page targets.
+- Must keep the existing four pipes and page targets (About Me, Dashboard, Settings, Feedback).
 - Must keep login/register buttons.
 
 **Approach Options:**
@@ -63,6 +63,7 @@ Use Option 1 for physics and state logic, and Option 3 for presentational animat
 - Confirm the desired feel for jump/run (Mario-like, fast, floaty, etc.).
 - Confirm whether to add sound effects (initial plan leaves them out).
 - Confirm camera behavior for wide vs. narrow screens.
+- Confirm that the Feedback pipe should receive the same polished treatment as the other pipes.
 
 ### Missing Information
 - Exact physics constants will need manual tuning; the plan provides starting values.
