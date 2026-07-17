@@ -2,29 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FeedbackRequest;
 use App\Models\Feedback;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class FeedbackController extends Controller
 {
+    /**
+     * Show the feedback form.
+     */
     public function create(): Response
     {
         return Inertia::render('feedback');
     }
 
-    public function store(Request $request): RedirectResponse
+    /**
+     * Store a new feedback submission.
+     */
+    public function store(FeedbackRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'message' => ['required', 'string', 'max:5000'],
-        ]);
+        Feedback::create($request->validated());
 
-        Feedback::create($validated);
+        Inertia::flash('toast', ['type' => 'success', 'message' => __('Thank you for your feedback!')]);
 
-        return back()->with('status', 'Thank you for your feedback!');
+        return back();
     }
 }
