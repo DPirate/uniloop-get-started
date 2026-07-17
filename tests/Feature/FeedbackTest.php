@@ -17,7 +17,7 @@ test('stores valid feedback and redirects back', function () {
     ]);
 
     $response->assertRedirect();
-    $response->assertSessionHas('status');
+    $response->assertInertiaFlash('toast', ['type' => 'success', 'message' => 'Thank you for your feedback!']);
 
     expect(Feedback::count())->toBe(1);
 
