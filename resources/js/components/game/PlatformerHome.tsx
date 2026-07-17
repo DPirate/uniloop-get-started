@@ -1,10 +1,9 @@
-import { router, usePage } from '@inertiajs/react';
+import { router } from '@inertiajs/react';
 import Knight from '@/components/game/Knight';
 import Pipe from '@/components/game/Pipe';
 import { usePlatformer } from '@/hooks/use-platformer';
-import { aboutMe, dashboard, login } from '@/routes';
+import { aboutMe, dashboard } from '@/routes';
 import { create as feedbackCreate } from '@/routes/feedback';
-import { edit as settingsProfile } from '@/routes/profile';
 
 const worldWidth = 960;
 const worldHeight = 540;
@@ -18,12 +17,9 @@ const platforms = [
     { x: 120, y: 380, width: 160, height: 20 },
     { x: 360, y: 300, width: 160, height: 20 },
     { x: 600, y: 220, width: 160, height: 20 },
-    { x: 840, y: 300, width: 120, height: 20 },
 ];
 
 export default function PlatformerHome() {
-    const { auth } = usePage().props;
-
     const pipes = [
         {
             x: 150,
@@ -38,24 +34,16 @@ export default function PlatformerHome() {
             y: 220,
             width: 56,
             height: 80,
-            route: auth.user ? dashboard().url : login().url,
-            label: auth.user ? 'Dashboard' : 'Log in',
+            route: feedbackCreate().url,
+            label: 'Feedback',
         },
         {
             x: 630,
             y: 140,
             width: 56,
             height: 80,
-            route: settingsProfile().url,
-            label: 'Settings',
-        },
-        {
-            x: 870,
-            y: 220,
-            width: 56,
-            height: 80,
-            route: feedbackCreate().url,
-            label: 'Feedback',
+            route: dashboard().url,
+            label: 'Dashboard',
         },
     ];
 
