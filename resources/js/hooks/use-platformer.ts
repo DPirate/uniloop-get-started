@@ -184,7 +184,7 @@ export function usePlatformer(
             };
 
             const currentPipe =
-                pipes.find((pipe) => checkCollision(playerRect, pipe)) || null;
+                pipes.find((pipe) => checkPipeTopCollision(playerRect, vy, pipe)) || null;
             setActivePipe(currentPipe);
 
             if (currentPipe && currentPipe.route !== lastPipeRoute) {
@@ -205,14 +205,27 @@ export function usePlatformer(
     return { player, facingLeft, isGrounded, activePipe };
 }
 
-function checkCollision(
-    rect1: { x: number; y: number; width: number; height: number },
-    rect2: { x: number; y: number; width: number; height: number },
+function checkPipeTopCollision(
+    playerRect: { x: number; y: number; width: number; height: number },
+    vy: number,
+    pipe: Pipe,
 ): boolean {
+    const boxWidth = pipe.width * 0.6;
+    const boxHeight = 12;
+    const box = {
+        x: pipe.x + (pipe.width - boxWidth) / 2,
+        y: pipe.y - boxHeight + 4,
+        width: boxWidth,
+        height: boxHeight,
+    };
+
+    const isMovingDown = vy >= 0;
+
     return (
-        rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x &&
-        rect1.y < rect2.y + rect2.height &&
-        rect1.y + rect1.height > rect2.y
+        isMovingDown &&
+        playerRect.x < box.x + box.width &&
+        playerRect.x + playerRect.width > box.x &&
+        playerRect.y < box.y + box.height &&
+        playerRect.y + playerRect.height > box.y
     );
 }
