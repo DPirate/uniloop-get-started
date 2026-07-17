@@ -32,7 +32,7 @@ public function create(): Response
 public function store(Request $request): RedirectResponse
 ```
 
-The `create` method renders the `feedback` Inertia page. The `store` method validates the input, redirects back, and flashes a success message.
+The `create` method renders the `feedback` Inertia page. The `store` method validates the input, persists the feedback to the database, redirects back, and flashes a success message.
 
 #### Modifications to Existing Code
 **File:** `routes/web.php`
@@ -57,7 +57,7 @@ Add a fourth pipe to the pipes list:
 Import the `feedbackCreate` route helper from `@/routes` (or the generated controller action helper).
 
 #### Database Changes
-None.
+A `feedback` table migration will be created to persist submissions (name, email, message, timestamps).
 
 #### Configuration Changes
 None.

@@ -60,3 +60,7 @@ The component:
    - Pipe 4 → `feedbackCreate()`
 4. Calls `usePlatformer` with the world data and an `onEnterPipe` callback that runs `router.visit(pipeTarget)`.
 5. Renders a container with absolute positioning, the platforms, the pipes, the knight, and instructions text.
+
+### Open Questions
+
+- Should the Dashboard pipe be hidden for guests, or visible-but-locked/redirected to login? The main plan proposes visible-but-locked/redirected.
