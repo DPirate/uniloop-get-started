@@ -1,5 +1,5 @@
 import { Form, Head, Link } from '@inertiajs/react';
-import { store } from '@/actions/App/Http/Controllers/FeedbackController';
+import FeedbackController from '@/actions/App/Http/Controllers/FeedbackController';
 import Heading from '@/components/heading';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
@@ -8,11 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { home } from '@/routes';
 
-type Props = {
-    status?: string;
-};
-
-export default function Feedback({ status }: Props) {
+export default function Feedback() {
     return (
         <>
             <Head title="Feedback" />
@@ -31,10 +27,12 @@ export default function Feedback({ status }: Props) {
                 <main className="flex flex-1 items-center justify-center">
                     <div className="w-full max-w-md rounded-lg border border-[#e3e3e0] bg-white p-6 shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
                         <Form
-                            action={store.url()}
-                            method="post"
-                            className="flex flex-col gap-6"
+                            {...FeedbackController.store.form()}
+                            options={{
+                                preserveScroll: true,
+                            }}
                             resetOnSuccess
+                            className="flex flex-col gap-6"
                         >
                             {({ processing, errors }) => (
                                 <>
@@ -77,12 +75,6 @@ export default function Feedback({ status }: Props) {
                                     <Button type="submit" disabled={processing}>
                                         Send feedback
                                     </Button>
-
-                                    {status && (
-                                        <p className="text-center text-sm font-medium text-green-600 dark:text-green-400">
-                                            {status}
-                                        </p>
-                                    )}
                                 </>
                             )}
                         </Form>
