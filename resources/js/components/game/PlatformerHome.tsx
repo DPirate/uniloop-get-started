@@ -2,7 +2,7 @@ import { router } from '@inertiajs/react';
 import Knight from '@/components/game/Knight';
 import Pipe from '@/components/game/Pipe';
 import { usePlatformer } from '@/hooks/use-platformer';
-import { aboutMe, dashboard } from '@/routes';
+import { aboutMe } from '@/routes';
 import { create as feedbackCreate } from '@/routes/feedback';
 
 const worldWidth = 960;
@@ -16,7 +16,6 @@ const platforms = [
     { x: 0, y: worldHeight - 40, width: worldWidth, height: 40 },
     { x: 120, y: 380, width: 160, height: 20 },
     { x: 360, y: 300, width: 160, height: 20 },
-    { x: 600, y: 220, width: 160, height: 20 },
 ];
 
 export default function PlatformerHome() {
@@ -36,14 +35,6 @@ export default function PlatformerHome() {
             height: 80,
             route: feedbackCreate().url,
             label: 'Feedback',
-        },
-        {
-            x: 630,
-            y: 140,
-            width: 56,
-            height: 80,
-            route: dashboard().url,
-            label: 'Dashboard',
         },
     ];
 
