@@ -184,7 +184,9 @@ export function usePlatformer(
             };
 
             const currentPipe =
-                pipes.find((pipe) => checkPipeTopCollision(playerRect, vy, pipe)) || null;
+                pipes.find((pipe) =>
+                    checkPipeTopCollision(playerRect, vy, pipe),
+                ) || null;
             setActivePipe(currentPipe);
 
             if (currentPipe && currentPipe.route !== lastPipeRoute) {
