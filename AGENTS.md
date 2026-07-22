@@ -205,3 +205,12 @@ Use Wayfinder to generate TypeScript functions for Laravel routes. Import from `
 - IMPORTANT: Activate `inertia-react-development` when working with Inertia React client-side patterns.
 
 </laravel-boost-guidelines>
+
+
+# Constitutional Checks
+- Always run `lint` and `format` checks after modifications.
+- Always verify that new features align with existing application patterns and conventions.
+- Ensure database migrations are created for new persistent data requirements.
+- Confirm that new routes follow existing naming conventions and middleware patterns.
+- Validate that new components integrate correctly with existing Inertia pages and layouts.
+- Check that new controllers follow existing controller structure and request validation patterns.
