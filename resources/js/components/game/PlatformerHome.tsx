@@ -4,6 +4,7 @@ import Pipe from '@/components/game/Pipe';
 import { usePlatformer } from '@/hooks/use-platformer';
 import { aboutMe } from '@/routes';
 import { create as feedbackCreate } from '@/routes/feedback';
+import { index as playgroundIndex } from '@/routes/playground';
 
 const worldWidth = 960;
 const worldHeight = 540;
@@ -35,6 +36,14 @@ export default function PlatformerHome() {
             height: 80,
             route: feedbackCreate().url,
             label: 'Feedback',
+        },
+        {
+            x: 830,
+            y: 420,
+            width: 56,
+            height: 80,
+            route: playgroundIndex().url,
+            label: 'Playground',
         },
     ];
 
