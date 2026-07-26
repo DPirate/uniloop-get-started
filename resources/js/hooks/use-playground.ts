@@ -239,8 +239,7 @@ export function usePlayground({
             only: ['component'],
             onSuccess: (page) => {
                 const created = page.props.component as
-                    | PlaygroundComponent
-                    | undefined;
+                    PlaygroundComponent | undefined;
 
                 if (created !== undefined) {
                     setSavedComponentId(created.id);
