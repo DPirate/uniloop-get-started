@@ -36,12 +36,13 @@ class PlaygroundComponentController extends Controller
     /**
      * Show the playground editor for a single component.
      */
-    public function edit(PlaygroundComponent $playgroundComponent): Response
+    public function edit(Request $request, PlaygroundComponent $playgroundComponent): Response
     {
         abort_if($playgroundComponent->user_id !== auth()->id(), 403);
 
         return Inertia::render('playground', [
             'component' => $playgroundComponent,
+            'components' => Inertia::optional(fn () => PlaygroundComponent::forUser($request->user())->get()),
         ]);
     }
 
